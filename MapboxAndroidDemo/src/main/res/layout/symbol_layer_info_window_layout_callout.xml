@@ -5,42 +5,55 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
+    android:paddingBottom="6dp"
     android:paddingEnd="8dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingStart="8dp"
-    android:paddingTop="8dp"
     app:mapbox_bl_arrowDirection="bottom"
     app:mapbox_bl_arrowHeight="8dp"
-    app:mapbox_bl_arrowPosition="50dp"
+    app:mapbox_bl_arrowPosition="70dp"
     app:mapbox_bl_arrowWidth="8dp"
     app:mapbox_bl_bubbleColor="@android:color/white"
     app:mapbox_bl_cornersRadius="6dp"
     app:mapbox_bl_strokeColor="@android:color/darker_gray"
     app:mapbox_bl_strokeWidth="1dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/symbol_layer_info_window_layout_callout_title"
+        <RelativeLayout
+            android:id="@+id/text_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="Bubble title" />
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/logoView"
+            android:layout_toRightOf="@id/logoView"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/symbol_layer_info_window_layout_callout_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:textSize="12sp"
-            tools:text="Bubble description" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Tonkutsu Ramen" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginTop="8dp"
+                android:text="Japanese"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </com.mapbox.mapboxsdk.annotations.BubbleLayout>
