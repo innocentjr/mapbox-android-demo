@@ -288,7 +288,7 @@ public class InfoWindowSymbolLayerActivity extends AppCompatActivity implements
       Log.d(TAG, "handleClickCallout: viewMap != null");
 
       View view = viewMap.get(feature.getStringProperty(FEATURE_TITLE_PROPERTY_KEY));
-      View textContainer = view.findViewById(R.id.symbol_layer_info_window_layout_text_container);
+      View textContainer = view.findViewById(R.id.plain_text_container);
 
       // create hit box for textView
       Rect hitRectText = new Rect();
@@ -314,7 +314,7 @@ public class InfoWindowSymbolLayerActivity extends AppCompatActivity implements
     }
 
     View view = viewMap.get(feature.getStringProperty(FEATURE_TITLE_PROPERTY_KEY));
-    View textContainer = view.findViewById(R.id.text_container);
+    View textContainer = view.findViewById(R.id.plain_text_container);
 
     // create hitbox for textView
     Rect hitRectText = new Rect();
@@ -379,11 +379,11 @@ public class InfoWindowSymbolLayerActivity extends AppCompatActivity implements
           View view = inflater.inflate(R.layout.symbol_layer_info_window_layout_callout, null);
 
           String titleForBubbleWindow = feature.getStringProperty("FEATURE_TITLE_PROPERTY_KEY");
-          TextView titleNumTextView = view.findViewById(R.id.symbol_layer_info_window_layout_callout_title);
+          TextView titleNumTextView = view.findViewById(R.id.plain_title);
           titleNumTextView.setText(titleForBubbleWindow);
 
           String descriptionForBubbleWindow = feature.getStringProperty("FEATURE_DESCRIPTION_PROPERTY_KEY");
-          TextView descriptionNumTextView = view.findViewById(R.id.symbol_layer_info_window_layout_callout_description);
+          TextView descriptionNumTextView = view.findViewById(R.id.plain_description);
           descriptionNumTextView.setText(descriptionForBubbleWindow);
 
           Bitmap bitmap = SymbolGenerator.generate(view);
