@@ -22,7 +22,9 @@
     <string name="activity_styles_line_layer_title">Create a line layer</string>
     <string name="activity_styles_basic_symbol_layer_title">Marker symbol layer</string>
     <string name="activity_styles_local_style_or_raster_source_title">Local style or custom raster style</string>
+    <string name="activity_style_image_source_time_lapse_title">Show time lapse</string>
     <string name="activity_style_image_source_title">Use an image source</string>
+    <string name="activity_styles_hillshade_title">Hillshading</string>
     <string name="activity_extrusions_catalina_marathon_extrusions_title">Use GeoJSON data to set extrusion height</string>
     <string name="activity_extrusions_population_density_extrusions_title">Display 3D building height based on vector data</string>
     <string name="activity_extrusions_adjust_extrusions_title">Adjust light location and color</string>
@@ -34,6 +36,7 @@
     <string name="activity_dds_style_line_identity_property_title">Style lines using an identity property function</string>
     <string name="activity_dds_time_lapse_rainfall_points_title">Data time lapse</string>
     <string name="activity_dds_multiple_geometries_title">Draw multiple geometries</string>
+    <string name="activity_dds_heatmap_title">Show heatmap data</string>
     <string name="activity_annotation_marker_title">Draw a marker</string>
     <string name="activity_annotation_custom_marker_title">Draw a custom marker icon</string>
     <string name="activity_annotation_geojson_line_title">Draw a GeoJSON line</string>

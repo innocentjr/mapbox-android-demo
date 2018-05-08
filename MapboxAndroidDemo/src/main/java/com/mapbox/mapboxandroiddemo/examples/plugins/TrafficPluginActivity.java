@@ -1,26 +1,25 @@
-package com.mapbox.mapboxandroiddemo.examples.styles;
+package com.mapbox.mapboxandroiddemo.examples.plugins;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.mapbox.mapboxandroiddemo.R;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.geometry.LatLngQuad;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import com.mapbox.mapboxsdk.style.layers.RasterLayer;
-import com.mapbox.mapboxsdk.style.sources.ImageSource;
+import com.mapbox.mapboxsdk.plugins.traffic.TrafficPlugin;
 
 /**
- * Use an ImageSource to add an image to the map.
+ * Toggle the Mapbox Traffic plugin to display real-time traffic data on top
+ * of your map (not all regions supported at the moment).
  */
-public class ImageSourceActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class TrafficPluginActivity extends AppCompatActivity {
 
   private MapView mapView;
-  private static final String ID_IMAGE_SOURCE = "animated_image_source";
-  private static final String ID_IMAGE_LAYER = "animated_image_layer";
+  private MapboxMap map;
+  private TrafficPlugin trafficPlugin;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -31,38 +30,28 @@ public class ImageSourceActivity extends AppCompatActivity implements OnMapReady
     Mapbox.getInstance(this, getString(R.string.access_token));
 
     // This contains the MapView in XML and needs to be called after the access token is configured.
-    setContentView(R.layout.activity_image_source);
+    setContentView(R.layout.activity_traffic_plugin);
 
-    mapView = findViewById(R.id.mapView);
+    mapView = (MapView) findViewById(R.id.mapView);
     mapView.onCreate(savedInstanceState);
-    mapView.getMapAsync(this);
+    mapView.getMapAsync(new OnMapReadyCallback() {
+      @Override
+      public void onMapReady(MapboxMap mapboxMap) {
+        map = mapboxMap;
+        trafficPlugin = new TrafficPlugin(mapView, mapboxMap);
+        TrafficPluginActivity.this.trafficPlugin.setVisibility(true); // Enable the traffic view by default
+      }
+    });
+
+    findViewById(R.id.traffic_toggle_fab).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        if (map != null) {
+          trafficPlugin.setVisibility(!trafficPlugin.isVisible());
+        }
+      }
+    });
   }
-
-  @Override
-  public void onMapReady(MapboxMap mapboxMap) {
-
-    // Set the latitude and longitude values for the image's four corners
-    LatLngQuad quad = new LatLngQuad(
-      new LatLng(25.7836, -80.11725),
-      new LatLng(25.783548, -80.1397431334),
-      new LatLng(25.7680, -80.13964),
-      new LatLng(25.76795, -80.11725)
-    );
-
-    // Create an ImageSource object
-    ImageSource imageSource = new ImageSource(ID_IMAGE_SOURCE, quad, R.drawable.miami_beach);
-
-    // Add the imageSource to the map
-    mapboxMap.addSource(imageSource);
-
-    // Create a raster layer and use the imageSource's ID as the layer's data
-    RasterLayer layer = new RasterLayer(ID_IMAGE_LAYER, ID_IMAGE_SOURCE);
-
-    // Add the layer to the map
-    mapboxMap.addLayer(layer);
-  }
-
-  // Add the mapView lifecycle to the activity's lifecycle methods
 
   @Override
   public void onResume() {
