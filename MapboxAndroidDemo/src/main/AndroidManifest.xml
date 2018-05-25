@@ -299,6 +299,13 @@
                 android:value="com.mapbox.mapboxandroiddemo.MainActivity" />
         </activity>
         <activity
+            android:name=".examples.styles.StyleFadeSwitchActivity"
+            android:label="@string/activity_styles_fade_switch_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mapbox.mapboxandroiddemo.MainActivity" />
+        </activity>
+        <activity
             android:name=".examples.query.QueryFeatureActivity"
             android:label="@string/activity_query_feature_title">
             <meta-data
@@ -446,6 +453,13 @@
                 android:value="com.mapbox.mapboxandroiddemo.MainActivity" />
         </activity>
         <activity
+            android:name=".examples.dds.MultipleHeatmapStylingActivity"
+            android:label="@string/activity_dds_multiple_heatmap_styling_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mapbox.mapboxandroiddemo.MainActivity" />
+        </activity>
+        <activity
             android:name=".examples.camera.RestrictCameraActivity"
             android:label="@string/activity_camera_restrict_title">
             <meta-data
@@ -455,13 +469,6 @@
         <activity
             android:name=".examples.plugins.BuildingPluginActivity"
             android:label="@string/activity_plugins_building_plugin_title">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mapbox.mapboxandroiddemo.MainActivity" />
-        </activity>
-        <activity
-            android:name=".examples.plugins.MarkerClustersPluginActivity"
-            android:label="@string/activity_plugins_marker_clusters_plugin_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mapbox.mapboxandroiddemo.MainActivity" />

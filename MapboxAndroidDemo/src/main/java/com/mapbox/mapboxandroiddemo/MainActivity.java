@@ -48,6 +48,7 @@ import com.mapbox.mapboxandroiddemo.examples.dds.ChoroplethZoomChangeActivity;
 import com.mapbox.mapboxandroiddemo.examples.dds.CreateHotspotsActivity;
 import com.mapbox.mapboxandroiddemo.examples.dds.HeatmapActivity;
 import com.mapbox.mapboxandroiddemo.examples.dds.MultipleGeometriesActivity;
+import com.mapbox.mapboxandroiddemo.examples.dds.MultipleHeatmapStylingActivity;
 import com.mapbox.mapboxandroiddemo.examples.dds.StyleCirclesCategoricallyActivity;
 import com.mapbox.mapboxandroiddemo.examples.dds.StyleLineIdentityPropertyActivity;
 import com.mapbox.mapboxandroiddemo.examples.extrusions.AdjustExtrusionLightActivity;
@@ -66,7 +67,6 @@ import com.mapbox.mapboxandroiddemo.examples.offline.SimpleOfflineMapActivity;
 import com.mapbox.mapboxandroiddemo.examples.plugins.BuildingPluginActivity;
 import com.mapbox.mapboxandroiddemo.examples.plugins.LocalizationPluginActivity;
 import com.mapbox.mapboxandroiddemo.examples.plugins.LocationPluginActivity;
-import com.mapbox.mapboxandroiddemo.examples.plugins.MarkerClustersPluginActivity;
 import com.mapbox.mapboxandroiddemo.examples.plugins.PlacesPluginActivity;
 import com.mapbox.mapboxandroiddemo.examples.plugins.TrafficPluginActivity;
 import com.mapbox.mapboxandroiddemo.examples.query.ClickOnLayerActivity;
@@ -90,6 +90,7 @@ import com.mapbox.mapboxandroiddemo.examples.styles.LineLayerActivity;
 import com.mapbox.mapboxandroiddemo.examples.styles.LocalStyleSourceActivity;
 import com.mapbox.mapboxandroiddemo.examples.styles.MapboxStudioStyleActivity;
 import com.mapbox.mapboxandroiddemo.examples.styles.ShowHideLayersActivity;
+import com.mapbox.mapboxandroiddemo.examples.styles.StyleFadeSwitchActivity;
 import com.mapbox.mapboxandroiddemo.examples.styles.VectorSourceActivity;
 import com.mapbox.mapboxandroiddemo.examples.styles.ZoomDependentFillColorActivity;
 import com.mapbox.mapboxandroiddemo.labs.AnimatedImageGifActivity;
@@ -365,6 +366,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
           new Intent(MainActivity.this, HillShadeActivity.class),
           R.string.activity_style_hillshade_url, false, BuildConfig.MIN_SDK_VERSION
         ));
+        exampleItemModels.add(new ExampleItemModel(
+          R.string.activity_styles_fade_switch_title,
+          R.string.activity_styles_fade_switch_description,
+          new Intent(MainActivity.this, StyleFadeSwitchActivity.class),
+          R.string.activity_styles_fade_switch_url, true, BuildConfig.MIN_SDK_VERSION
+        ));
         currentCategory = R.id.nav_styles;
         break;
       case R.id.nav_extrusions:
@@ -404,10 +411,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
       case R.id.nav_plugins:
 
         exampleItemModels.add(new ExampleItemModel(
-            R.string.activity_plugins_traffic_plugin_title,
-            R.string.activity_plugins_traffic_plugin_description,
-            new Intent(MainActivity.this, TrafficPluginActivity.class),
-            R.string.activity_plugins_traffic_plugin_url, false, BuildConfig.MIN_SDK_VERSION));
+          R.string.activity_plugins_traffic_plugin_title,
+          R.string.activity_plugins_traffic_plugin_description,
+          new Intent(MainActivity.this, TrafficPluginActivity.class),
+          R.string.activity_plugins_traffic_plugin_url, false, BuildConfig.MIN_SDK_VERSION));
 
         exampleItemModels.add(new ExampleItemModel(
           R.string.activity_plugins_building_plugin_title,
@@ -426,12 +433,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
           new Intent(MainActivity.this, PlacesPluginActivity.class),
           R.string.activity_plugins_places_plugin_url, false, BuildConfig.MIN_SDK_VERSION));
 
-        exampleItemModels.add(new ExampleItemModel(
-          R.string.activity_plugins_marker_clusters_plugin_title,
-          R.string.activity_plugins_geojson_marker_clusters_description,
-          new Intent(MainActivity.this, MarkerClustersPluginActivity.class),
-          R.string.activity_plugins_markers_clusters_plugin_url, false, BuildConfig.MIN_SDK_VERSION)
-        );
         exampleItemModels.add(new ExampleItemModel(
           R.string.activity_plugins_localization_plugin_title,
           R.string.activity_plugins_localization_plugin_description,
@@ -675,7 +676,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
           R.string.activity_dds_heatmap_title,
           R.string.activity_dds_heatmap_description,
           new Intent(MainActivity.this, HeatmapActivity.class),
-          R.string.activity_dds_heatmap_url, true, BuildConfig.MIN_SDK_VERSION));
+          R.string.activity_dds_heatmap_url, false, BuildConfig.MIN_SDK_VERSION));
+
+        exampleItemModels.add(new ExampleItemModel(
+          R.string.activity_dds_multiple_heatmap_styling_title,
+          R.string.activity_dds_multiple_heatmap_styling_description,
+          new Intent(MainActivity.this, MultipleHeatmapStylingActivity.class),
+          R.string.activity_dds_multiple_heatmap_styling_url, false, BuildConfig.MIN_SDK_VERSION));
 
         exampleItemModels.add(new ExampleItemModel(
           R.string.activity_dds_style_circle_categorically_title,
